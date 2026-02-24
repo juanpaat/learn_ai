@@ -1,5 +1,23 @@
 # Introduction to APIs in Python
 
+## Table of Contents
+
+1. [What is an API?](#what-is-an-api)
+2. [Types of APIs](#types-of-apis)
+3. [Types of Web APIs (the most common)](#types-of-web-apis-the-most-common)
+4. [Working with APIs in Python](#working-with-apis-in-python)
+5. [The Basic Anatomy of an API Request](#the-basic-anatomy-of-an-api-request)
+6. [Adding Query Parameters with `requests`](#adding-query-parameters-with-requests)
+7. [HTTP Verbs (Most Common)](#http-verbs-most-common)
+8. [Request Message and Response Message](#request-message-and-response-message)
+9. [Status Codes](#status-codes)
+10. [Common Headers](#common-headers)
+11. [API Authentication](#api-authentication)
+12. [Working with Structured Data](#working-with-structured-data)
+13. [Error Handling](#error-handling)
+
+---
+
 ## What is an API?
 
 An **API** (Application Programming Interface) is a way for two programs to talk to each other. Think of it like a waiter at a restaurant: you (the client) tell the waiter (the API) what you want, the waiter takes your order to the kitchen (the server), and then brings back the food (the response).
