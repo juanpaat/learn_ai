@@ -40,13 +40,13 @@ The models live on the [Hugging Face Model Hub](https://huggingface.co/models), 
 ## 2. Installing the Library
 
 ```bash
-pip install transformers
+uv pip install transformers
 
 # If you want GPU support via PyTorch (recommended for speed):
-pip install transformers torch
+uv pip install transformers torch
 
 # If you prefer TensorFlow:
-pip install transformers tensorflow
+uv pip install transformers tensorflow
 ```
 
 ---
@@ -121,7 +121,7 @@ Large models can require a lot of RAM. You can load them in reduced precision to
 ```python
 from transformers import pipeline, BitsAndBytesConfig
 
-# Load in 8-bit (requires: pip install bitsandbytes)
+# Load in 8-bit (requires: uv pip install bitsandbytes)
 pipe = pipeline(
     "text-generation",
     model="mistralai/Mistral-7B-v0.1",
@@ -1077,7 +1077,7 @@ You use them through separate, official Python packages:
 
 **OpenAI (GPT-4, GPT-4o)**
 ```python
-pip install openai
+uv pip install openai
 ```
 ```python
 from openai import OpenAI
@@ -1093,7 +1093,7 @@ print(response.choices[0].message.content)
 
 **Anthropic (Claude)**
 ```python
-pip install anthropic
+uv pip install anthropic
 ```
 ```python
 import anthropic
@@ -1110,7 +1110,7 @@ print(message.content[0].text)
 
 **Google (Gemini)**
 ```python
-pip install google-genai
+uv pip install google-genai
 ```
 ```python
 from google import genai
@@ -1129,7 +1129,7 @@ print(response.text)
 Yes! Hugging Face has its own cloud inference API. You can call it without downloading any model and without a GPU. This is useful for prototyping or for models too large to run locally:
 
 ```python
-pip install huggingface_hub
+uv pip install huggingface_hub
 ```
 
 ```python
@@ -1155,7 +1155,7 @@ This calls the model on Hugging Face's servers — you don't need a GPU. The fre
 If you want to switch between OpenAI, Anthropic, Gemini, and Hugging Face models easily — using the same code structure — you can use a wrapper library:
 
 ```python
-pip install langchain langchain-openai langchain-anthropic
+uv pip install langchain langchain-openai langchain-anthropic
 ```
 
 ```python
