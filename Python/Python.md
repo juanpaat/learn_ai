@@ -3235,7 +3235,7 @@ asyncio.run(main())
 
 ### Real-world example: fetching multiple web pages
 
-Here is a practical example using the `aiohttp` library (install with `pip install aiohttp`) to fetch multiple web pages concurrently:
+Here is a practical example using the `aiohttp` library (install with `uv pip install aiohttp`) to fetch multiple web pages concurrently:
 
 ```python
 import asyncio
@@ -3358,7 +3358,7 @@ pandas is the standard Python library for working with structured, tabular data 
 ### Installing pandas
 
 ```bash
-pip install pandas
+uv pip install pandas
 ```
 
 ### Importing

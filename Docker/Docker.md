@@ -264,7 +264,7 @@ Docker images are built in **layers**, where each layer represents a change on t
 
 ```
 Layer 4: COPY train.py /app/         ← your code
-Layer 3: RUN pip install -r requirements.txt
+Layer 3: RUN uv pip install -r requirements.txt
 Layer 2: COPY requirements.txt /app/
 Layer 1: FROM python:3.11-slim        ← base image (also layers)
 ```
@@ -527,7 +527,7 @@ WORKDIR /app                   # Set the working directory inside the container
 
 COPY requirements.txt .        # Copy a file from your machine into the image
 
-RUN pip install --no-cache-dir -r requirements.txt  # Run a shell command
+RUN uv pip install --no-cache-dir -r requirements.txt  # Run a shell command
 
 COPY . .                       # Copy the rest of your project files
 
@@ -545,7 +545,7 @@ CMD ["python", "train.py"]     # Default command to run when container starts
 | `FROM` | Sets the base image. Every Dockerfile starts with this. |
 | `WORKDIR` | Sets the working directory for subsequent instructions. Created if it doesn't exist. |
 | `COPY` | Copies files/directories from your host into the image. |
-| `RUN` | Executes a shell command during the image build (e.g., `pip install`). |
+| `RUN` | Executes a shell command during the image build (e.g., `uv pip install`). |
 | `ENV` | Sets environment variables available inside the container. |
 | `EXPOSE` | Documents which port the app listens on (does not actually publish the port). |
 | `CMD` | The default command that runs when a container starts. Can be overridden. |
@@ -571,18 +571,18 @@ Since Docker caches each layer, order your instructions to maximize cache reuse:
 
 ```dockerfile
 # Good: copy requirements FIRST, install, THEN copy code
-# If only code changes, the pip install layer is served from cache
+# If only code changes, the uv pip install layer is served from cache
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN uv pip install -r requirements.txt
 COPY . .                        # ← code changes only invalidate this layer and below
 ```
 
 ```dockerfile
-# Bad: copying everything first means any code change re-runs pip install
+# Bad: copying everything first means any code change re-runs uv pip install
 
 COPY . .
-RUN pip install -r requirements.txt  # ← runs every time, even for small code changes
+RUN uv pip install -r requirements.txt  # ← runs every time, even for small code changes
 ```
 
 ### .dockerignore
@@ -672,7 +672,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies (no cache saves space in the image)
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the project
 COPY . .
@@ -705,7 +705,7 @@ You'll see Docker execute each instruction, with output like:
  => [1/5] FROM python:3.11-slim
  => [2/5] WORKDIR /app
  => [3/5] COPY requirements.txt .
- => [4/5] RUN pip install --no-cache-dir -r requirements.txt
+ => [4/5] RUN uv pip install --no-cache-dir -r requirements.txt
  => [5/5] COPY . .
  => exporting to image
 ```
@@ -934,7 +934,7 @@ Once you're happy with training, package the model server the same way:
 FROM python:3.11-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --no-cache-dir -r requirements.txt
 COPY . .
 EXPOSE 8000
 CMD ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "8000"]

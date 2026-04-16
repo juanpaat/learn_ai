@@ -67,7 +67,7 @@ Throughout this guide, we'll work with **REST APIs**, since they are the standar
 Python makes it very easy to talk to web APIs using the `requests` library. It is not part of the standard library, so you need to install it first:
 
 ```bash
-pip install requests
+uv pip install requests
 ```
 
 Here is the simplest possible example — fetching data from a public API and printing the result:
