@@ -12,3 +12,7 @@ git branch -M main
 git push -u origin main
 
 git push origin --delete master
+
+git switch main
+
+git pull origin main
