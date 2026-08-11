@@ -1,6 +1,6 @@
 # Hugging Face Datasets: A Deep-Dive Guide
 
-> A plain-English guide to the 🤗 Datasets library — how to load data from anywhere, clean and transform it efficiently, work with datasets too large to fit in RAM, build your own dataset from scratch, and share it with the world.
+> A guide to the 🤗 Datasets library — how to load data from anywhere, clean and transform it efficiently, work with datasets too large to fit in RAM, build your own dataset from scratch, and share it with the world.
 
 ---
 
