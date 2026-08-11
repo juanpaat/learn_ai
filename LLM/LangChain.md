@@ -72,6 +72,8 @@ print(prompt.format(topic='Cricket', length='fun'))
 
 ### Role-Based Prompts
 ```python
+from langchain_core.prompts import ChatPromptTemplate
+
 chat_prompt = ChatPromptTemplate.from_template([
     ("system", "Hi you are a experienced {profession}"),
     ("user", "Tell me about {topic}"),
@@ -85,6 +87,8 @@ formatted_messages = chat_prompt.format_messages(
 
 ### Few Shot Prompting
 ```python
+from langchain_core.prompts import FewShotPromptTemplate
+
 examples = [
     {"input": "I was charged twice for my subscription this month.", "output": "Billing Issue"},
     {"input": "The app crashes every time I try to log in.", "output": "Technical Problem"},
